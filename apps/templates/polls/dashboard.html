@@ -1,0 +1,60 @@
+
+{% extends "layouts/polls_base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-12 text-left">
+                            <h5 class="card-category">Question</h5>
+                            <h5 class="card-title">Total Count: {{ count }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+
+    const data = {
+      labels: {{ label | safe }},
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: {{ data | safe }},
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+    var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+{% endblock javascripts %}
