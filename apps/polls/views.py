@@ -35,5 +35,5 @@ def profile(request):
     if request.method == "GET":
         return render(request, "polls/profile.html", context={"segment": segment})
     elif request.method == "POST":
-        messages.success(request, "Profile updated successfully.")
+        messages.success(request, "Profile updated successfully")
         return redirect('/polls/profile/')
